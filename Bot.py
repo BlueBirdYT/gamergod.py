@@ -15,6 +15,18 @@ import aiohttp
 from discord.voice_client import VoiceClient
 from random import choice, shuffle
 
+
+client = commands.Bot(description="A bot made on Android", command_prefix="g!", pm_help = True)
+client.remove_command('help')
+
+@client.event
+async def on_ready():
+     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
+     print('the bot is ready')
+     print('.......')
+     print('created by GAMER SAHIL')
+     client.loop.create_task(status_task())
+
 def is_owner(ctx):
      return ctx.message.author.id in ["551320853128806411","429301779981795338"]
 
@@ -30,16 +42,6 @@ def is_DP(ctx):
 def is_BlueBird(ctx):
     return ctx.message.author.id == "455322915471097857"
 
-client = commands.Bot(description="A bot made on Android", command_prefix="g!", pm_help = True)
-client.remove_command('help')
-
-@client.event
-async def on_ready():
-     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
-     print('the bot is ready')
-     print('.......')
-     print('created by GAMER SAHIL')
-     client.loop.create_task(status_task())
 
 async def status_task():
     while True:
