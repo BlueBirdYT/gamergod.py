@@ -1227,4 +1227,4 @@ async def movie(ctx, *, name:str=None):
             await client.say(embed=embed)
 
 
-client.run(os.getenv('Token'))
+client.run('token')
